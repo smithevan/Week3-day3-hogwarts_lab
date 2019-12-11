@@ -10,6 +10,15 @@ get '/students' do
   @students = Student.all()
   erb( :index )
 end
+
+
+# new
+
+get '/students/new' do
+  @houses = House.all
+  erb ( :new )
+end
+
 # show
 get '/students/:id' do
   @student = Student.find(params[:id])
@@ -19,16 +28,12 @@ get '/students/:id' do
   erb ( :show )
 end
 
-# new
-
-get '/students/new' do
-  erb ( :new )
-end
 
 # create
 
 post '/students' do
   @student = Student.new( params )
+
   @student.save()
   erb ( :create )
 end
@@ -36,6 +41,7 @@ end
 # edit
 
 get '/students/:id/edit' do
+  @houses = House.all
   @student = Student.find(params[:id])
   erb ( :edit)
 end
@@ -43,6 +49,7 @@ end
 # update
 
 post '/students/:id' do
+
   Student.new(params).update
   redirect to '/students'
 end
