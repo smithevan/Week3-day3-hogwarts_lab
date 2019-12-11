@@ -11,6 +11,13 @@ get '/students' do
   erb( :index )
 end
 # show
+get '/students/:id' do
+  @student = Student.find(params[:id])
+  house_id = @student.house_id
+  student_house = House.find(house_id)
+  @student_house_name = student_house.name
+  erb ( :show )
+end
 
 # new
 

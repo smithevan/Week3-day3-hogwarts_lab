@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+# require 'pry'
 
 class Student
 
@@ -84,6 +85,27 @@ class Student
   def format_name
     return "#{@first_name.capitalize} #{@last_name.capitalize}"
   end
+
+  # def self.house_name(id)
+  #   sql = "SELECT * FROM houses
+  #       WHERE id = $1"
+  #   values = [id]
+  #   result = SqlRunner.run(sql, values)
+  #   house = House.new(result.first)
+  # end
+
+  # binding.pry
+  # nil
+
+  def self.find(id)
+    sql = "SELECT * FROM students
+          WHERE id = $1"
+    values = [id]
+    student = SqlRunner.run(sql, values)
+    result = Student.new(student.first)
+  end
+
+
 
 
 
