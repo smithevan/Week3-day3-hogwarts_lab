@@ -45,4 +45,6 @@ class House
     return house_data.map { |house| House.new(house) }
   end
 
+  
+
 end
